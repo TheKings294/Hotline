@@ -23,6 +23,8 @@
     {"name":"Script1","order":4,"path":"scripts/Script1/Script1.yy",},
     {"name":"Chaise","order":9,"path":"sprites/Chaise/Chaise.yy",},
     {"name":"Lavabo","order":8,"path":"sprites/Lavabo/Lavabo.yy",},
+    {"name":"Level1","order":10,"path":"sprites/Level1/Level1.yy",},
+    {"name":"Level2","order":11,"path":"sprites/Level2/Level2.yy",},
     {"name":"Lit","order":7,"path":"sprites/Lit/Lit.yy",},
     {"name":"Mur1","order":5,"path":"sprites/Mur1/Mur1.yy",},
     {"name":"Mur2","order":6,"path":"sprites/Mur2/Mur2.yy",},

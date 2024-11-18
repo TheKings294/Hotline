@@ -35,6 +35,7 @@
   },
   "name":"SUNGOD",
   "resources":[
+    {"id":{"name":"obj_bot","path":"objects/obj_bot/obj_bot.yy",},},
     {"id":{"name":"Object1","path":"objects/Object1/Object1.yy",},},
     {"id":{"name":"Niveau1","path":"rooms/Niveau1/Niveau1.yy",},},
     {"id":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
@@ -42,6 +43,8 @@
     {"id":{"name":"autremur","path":"sprites/autremur/autremur.yy",},},
     {"id":{"name":"Chaise","path":"sprites/Chaise/Chaise.yy",},},
     {"id":{"name":"Lavabo","path":"sprites/Lavabo/Lavabo.yy",},},
+    {"id":{"name":"Level1","path":"sprites/Level1/Level1.yy",},},
+    {"id":{"name":"Level2","path":"sprites/Level2/Level2.yy",},},
     {"id":{"name":"Lit","path":"sprites/Lit/Lit.yy",},},
     {"id":{"name":"mapDebut","path":"sprites/mapDebut/mapDebut.yy",},},
     {"id":{"name":"Mur1","path":"sprites/Mur1/Mur1.yy",},},

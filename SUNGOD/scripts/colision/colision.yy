@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"colision",
+  "isCompatibility":false,
+  "isDnD":true,
+  "name":"colision",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

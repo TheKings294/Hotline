@@ -36,6 +36,7 @@
   "resources":[
     {"id":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
     {"id":{"name":"plancher","path":"sprites/plancher/plancher.yy",},},
+    {"id":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

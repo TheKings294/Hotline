@@ -34,7 +34,9 @@
   },
   "name":"SUNGOD",
   "resources":[
+    {"id":{"name":"obj_bot","path":"objects/obj_bot/obj_bot.yy",},},
     {"id":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
+    {"id":{"name":"Bot1","path":"sprites/Bot1/Bot1.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

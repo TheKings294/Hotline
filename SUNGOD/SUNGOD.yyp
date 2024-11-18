@@ -37,7 +37,6 @@
   "resources":[
     {"id":{"name":"obj_bot","path":"objects/obj_bot/obj_bot.yy",},},
     {"id":{"name":"Object1","path":"objects/Object1/Object1.yy",},},
-    {"id":{"name":"niveau_1","path":"rooms/niveau_1/niveau_1.yy",},},
     {"id":{"name":"Niveau1","path":"rooms/Niveau1/Niveau1.yy",},},
     {"id":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},},
@@ -56,7 +55,6 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
     {"roomId":{"name":"Niveau1","path":"rooms/Niveau1/Niveau1.yy",},},
-    {"roomId":{"name":"niveau_1","path":"rooms/niveau_1/niveau_1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

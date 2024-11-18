@@ -36,6 +36,7 @@
   "name":"SUNGOD",
   "resources":[
     {"id":{"name":"Object1","path":"objects/Object1/Object1.yy",},},
+    {"id":{"name":"niveau_1","path":"rooms/niveau_1/niveau_1.yy",},},
     {"id":{"name":"Niveau1","path":"rooms/Niveau1/Niveau1.yy",},},
     {"id":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
     {"id":{"name":"Script1","path":"scripts/Script1/Script1.yy",},},
@@ -43,7 +44,6 @@
     {"id":{"name":"Chaise","path":"sprites/Chaise/Chaise.yy",},},
     {"id":{"name":"Lavabo","path":"sprites/Lavabo/Lavabo.yy",},},
     {"id":{"name":"Lit","path":"sprites/Lit/Lit.yy",},},
-    {"id":{"name":"mapDebut","path":"sprites/mapDebut/mapDebut.yy",},},
     {"id":{"name":"Mur1","path":"sprites/Mur1/Mur1.yy",},},
     {"id":{"name":"Mur2","path":"sprites/Mur2/Mur2.yy",},},
     {"id":{"name":"plancher","path":"sprites/plancher/plancher.yy",},},
@@ -54,6 +54,7 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
     {"roomId":{"name":"Niveau1","path":"rooms/Niveau1/Niveau1.yy",},},
+    {"roomId":{"name":"niveau_1","path":"rooms/niveau_1/niveau_1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

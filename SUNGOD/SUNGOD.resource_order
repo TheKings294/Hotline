@@ -19,6 +19,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"Object1","order":2,"path":"objects/Object1/Object1.yy",},
+    {"name":"niveau_1","order":17,"path":"rooms/niveau_1/niveau_1.yy",},
     {"name":"Niveau1","order":1,"path":"rooms/Niveau1/Niveau1.yy",},
     {"name":"Script1","order":4,"path":"scripts/Script1/Script1.yy",},
     {"name":"Chaise","order":9,"path":"sprites/Chaise/Chaise.yy",},

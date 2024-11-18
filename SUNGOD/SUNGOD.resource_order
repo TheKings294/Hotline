@@ -30,5 +30,6 @@
     {"name":"Mur2","order":6,"path":"sprites/Mur2/Mur2.yy",},
     {"name":"plancher","order":1,"path":"sprites/plancher/plancher.yy",},
     {"name":"Sol","order":3,"path":"sprites/Sol/Sol.yy",},
+    {"name":"TileSet1","order":2,"path":"tilesets/TileSet1/TileSet1.yy",},
   ],
 }

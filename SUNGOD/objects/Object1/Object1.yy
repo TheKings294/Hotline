@@ -6,8 +6,8 @@
   "name":"Object1",
   "overriddenProperties":[],
   "parent":{
-    "name":"Pièces",
-    "path":"folders/Pièces.yy",
+    "name":"Room",
+    "path":"folders/Room.yy",
   },
   "parentObjectId":null,
   "persistent":false,

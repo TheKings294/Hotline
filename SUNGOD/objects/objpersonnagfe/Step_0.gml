@@ -8,6 +8,12 @@ if keyboard_check(ord("D")) { move_x += 1; }
 if keyboard_check(ord("A")) { move_x -= 1; }
 
 
+if keyboard_check(vk_down) { move_y += 1; }
+if keyboard_check(vk_up) { move_y -= 1; }
+if keyboard_check(vk_right) { move_x += 1; }
+if keyboard_check(vk_left) { move_x -= 1; }
+
+
 var magnitude = sqrt(move_x * move_x + move_y * move_y);
 if magnitude > 0 {
     move_x /= magnitude;

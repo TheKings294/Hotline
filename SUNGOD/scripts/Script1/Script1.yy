@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"Script1",
   "parent":{
-    "name":"Pièces",
-    "path":"folders/Pièces.yy",
+    "name":"Room",
+    "path":"folders/Room.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

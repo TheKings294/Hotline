@@ -40,6 +40,11 @@
     {"id":{"name":"autremur","path":"sprites/autremur/autremur.yy",},},
     {"id":{"name":"mapDebut","path":"sprites/mapDebut/mapDebut.yy",},},
     {"id":{"name":"plancher","path":"sprites/plancher/plancher.yy",},},
+<<<<<<< HEAD
+    {"id":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},},
+    {"id":{"name":"Sprite3","path":"sprites/Sprite3/Sprite3.yy",},},
+=======
+>>>>>>> 1b6d97ac64cd31b87ece38a0499f0288c17f50c6
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

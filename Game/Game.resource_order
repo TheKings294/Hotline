@@ -1,0 +1,12 @@
+{
+  "FolderOrderSettings":[
+    {"name":"Animation Curves","order":6,"path":"folders/Animation Curves.yy",},
+    {"name":"Extensions","order":7,"path":"folders/Extensions.yy",},
+    {"name":"Paths","order":2,"path":"folders/Paths.yy",},
+    {"name":"Scripts","order":3,"path":"folders/Scripts.yy",},
+    {"name":"Shaders","order":4,"path":"folders/Shaders.yy",},
+    {"name":"Tile Sets","order":1,"path":"folders/Tile Sets.yy",},
+    {"name":"Timelines","order":5,"path":"folders/Timelines.yy",},
+  ],
+  "ResourceOrderSettings":[],
+}

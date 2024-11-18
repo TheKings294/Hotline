@@ -35,6 +35,7 @@
   "name":"SUNGOD",
   "resources":[
     {"id":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
+    {"id":{"name":"plancher","path":"sprites/plancher/plancher.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

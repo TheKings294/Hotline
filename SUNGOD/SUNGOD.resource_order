@@ -16,5 +16,7 @@
     {"name":"Sprites","order":1,"path":"folders/Sprites.yy",},
     {"name":"Tile sets","order":2,"path":"folders/Tile sets.yy",},
   ],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"plancher","order":16,"path":"sprites/plancher/plancher.yy",},
+  ],
 }

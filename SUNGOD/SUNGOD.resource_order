@@ -4,6 +4,7 @@
     {"name":"Chronologies","order":8,"path":"folders/Chronologies.yy",},
     {"name":"Courbes d’animation","order":12,"path":"folders/Courbes d’animation.yy",},
     {"name":"Extensions","order":14,"path":"folders/Extensions.yy",},
+    {"name":"Maps","order":16,"path":"folders/Maps.yy",},
     {"name":"Objets","order":9,"path":"folders/Objets.yy",},
     {"name":"Particle Systems","order":15,"path":"folders/Particle Systems.yy",},
     {"name":"Pièces","order":10,"path":"folders/Pièces.yy",},
@@ -17,6 +18,6 @@
     {"name":"Tile sets","order":2,"path":"folders/Tile sets.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"plancher","order":16,"path":"sprites/plancher/plancher.yy",},
+    {"name":"plancher","order":1,"path":"sprites/plancher/plancher.yy",},
   ],
 }

@@ -18,6 +18,15 @@
     {"name":"Tile sets","order":2,"path":"folders/Tile sets.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"Object1","order":2,"path":"objects/Object1/Object1.yy",},
+    {"name":"Niveau1","order":1,"path":"rooms/Niveau1/Niveau1.yy",},
+    {"name":"Script1","order":4,"path":"scripts/Script1/Script1.yy",},
+    {"name":"Chaise","order":9,"path":"sprites/Chaise/Chaise.yy",},
+    {"name":"Lavabo","order":8,"path":"sprites/Lavabo/Lavabo.yy",},
+    {"name":"Lit","order":7,"path":"sprites/Lit/Lit.yy",},
+    {"name":"Mur1","order":5,"path":"sprites/Mur1/Mur1.yy",},
+    {"name":"Mur2","order":6,"path":"sprites/Mur2/Mur2.yy",},
     {"name":"plancher","order":1,"path":"sprites/plancher/plancher.yy",},
+    {"name":"Sol","order":3,"path":"sprites/Sol/Sol.yy",},
   ],
 }

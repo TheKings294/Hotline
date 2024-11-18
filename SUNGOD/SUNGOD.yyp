@@ -45,6 +45,8 @@
     {"id":{"name":"autremur","path":"sprites/autremur/autremur.yy",},},
     {"id":{"name":"Chaise","path":"sprites/Chaise/Chaise.yy",},},
     {"id":{"name":"Lavabo","path":"sprites/Lavabo/Lavabo.yy",},},
+    {"id":{"name":"Level1","path":"sprites/Level1/Level1.yy",},},
+    {"id":{"name":"Level2","path":"sprites/Level2/Level2.yy",},},
     {"id":{"name":"Lit","path":"sprites/Lit/Lit.yy",},},
     {"id":{"name":"Mur1","path":"sprites/Mur1/Mur1.yy",},},
     {"id":{"name":"Mur2","path":"sprites/Mur2/Mur2.yy",},},
@@ -58,7 +60,6 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
     {"roomId":{"name":"Niveau1","path":"rooms/Niveau1/Niveau1.yy",},},
-    {"roomId":{"name":"niveau_1","path":"rooms/niveau_1/niveau_1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

@@ -14,6 +14,7 @@
     {"$GMFolder":"","%Name":"Chronologies","folderPath":"folders/Chronologies.yy","name":"Chronologies","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Courbes d’animation","folderPath":"folders/Courbes d’animation.yy","name":"Courbes d’animation","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Maps","folderPath":"folders/Maps.yy","name":"Maps","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objets","folderPath":"folders/Objets.yy","name":"Objets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Particle Systems","folderPath":"folders/Particle Systems.yy","name":"Particle Systems","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Pièces","folderPath":"folders/Pièces.yy","name":"Pièces","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -36,7 +37,9 @@
   "resources":[
     {"id":{"name":"obj_bot","path":"objects/obj_bot/obj_bot.yy",},},
     {"id":{"name":"Tuto","path":"rooms/Tuto/Tuto.yy",},},
-    {"id":{"name":"Bot1","path":"sprites/Bot1/Bot1.yy",},},
+    {"id":{"name":"autremur","path":"sprites/autremur/autremur.yy",},},
+    {"id":{"name":"mapDebut","path":"sprites/mapDebut/mapDebut.yy",},},
+    {"id":{"name":"plancher","path":"sprites/plancher/plancher.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

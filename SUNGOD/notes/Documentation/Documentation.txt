@@ -1,0 +1,414 @@
+This note is high-level documentation for the core parts of this template project.
+All events in this project are commented, so you can open any event and read the comments to understand what it does, and how it works.
+
+
+# OBJECTS
+
+There are 32 Objects witin this project:
+
+obj_splash_manager
+	Game object exists withing main menu splash screen, handles all in intial splash screen needs including the highscore table.
+
+	Create				Sets the games inital full screen options and creates or loads the player highscores as well as setting up fonts and 
+						starts the main menu music. Also checks if the game is runnning on mobile devices and sets global variable that allows touch controls.
+	Draw GUI			Used to draw the highscore table as it is faded in and out of the screen depending on if it should be shown or not.
+	
+obj_game_manager
+	Game object used in main gameplay room, creates the level and stores the information for games waves and states.
+
+	Create				Sets up the entire level creating room from its set variables and rates, arena grid is set up and created with approprate walls used
+						where possible. Checks if on mobile and creates UI if needed. Enemy spawners also created within the levels gaps and also checks gameplay is possible resetting room if not. Creates
+						flowers, obstacles and player in approprate locations. Also sets up the grid used for the enemy pathfinding.
+						Also contains functions called when appropriate:
+							pause_game()									Pauses gameplay.
+							resume_game()									Resumes gameplay.
+							wave_cleared()									Called when wave is cleared and displays wave cleared banner.
+							wave_incoming()									Called after wave cleared disapears to display alert banner.
+							wave_new_spawners()								Called when new wave is to be added to the games spawner objects and decided what spawners have enemies added to their queues.
+							lose_game()										Called when player dies and lose banner should appear.
+							wind_game()										Called when player has completed the last wave and ends the game.
+	Begin Step			Small check for handling the last paused state of the game.
+	Step				Checks for when waves have been completed and handles how to add new waves to the game. Also handles players camera movement.
+	Draw				Just draws the games vignette at the objects possition.
+	Draw GUI			Draws the players HUD score and crosshair hiding the mouse when neccessary.
+	
+obj_particle_handler
+	Game object to setup create and control the particle systems witin the game easily
+
+	Create				Used to set up the particle systems variables that can be used later.
+						Contains functions called when appropriate:
+							set_angle(_new_angle)							Sets an angle that is applied to the particle system.
+							set_offset(_is_offset, _x_offset, _y_offset)	Sets the offset variavles that are then used and applied to the particle system in its step event.
+							set_smoke()										Sets the particle system as a smoke effect.
+							set_dust_smoke(_dust_type)						Sets the particle system as a dust smoke effect as well as what kind of dust smoke it is.
+							set_empty_shot()								Sets up the particle system for when the player cant fire.
+							set_player_shot()								Sets the particle system for a players fireball sparking.
+							set_enemy_shot()								Sets the particle system for an enemies fireball sparking.
+							set_character_defeat()							Sets the particle system for an actors explosion and creates a sound effect to match.
+							destroy_particles()								Called to destroy the particle system when the object is finished with it.
+	Step				Handles any updates that should happen to the particle systems such as when its a certain effect how it updates and eventually destroys itself, also
+						makes sure the particle systems are paused and unpaused depending on the games state.
+						
+obj_touch_manager
+	Game object that exists to control touch input detection for objects set within it.
+
+	Begin Step			Used to detect touch inputs from user when existing within the room on joysick objects and updates the objects with the inputs touch id when needed.
+
+obj_player
+	Game object used for the player and how it acts.
+	
+	Create				Sets up all the player variables such as health and local id as well as its ammo count and speeds for movement and rotations. Also sets up the dust trails.
+						Contains functions called when appropriate:
+							create_projectile(_gun_angle)					Uses the guns angle to create a fireball projectile and effects at the guns muzzel.
+							trigger_pressed()								Function called when player tries to fire. Checks players ammo and reload states to control the players ability
+																			to create projectiles or just smoke effects.
+	Begin Step			Checks if player has health to continue game.
+	Step				Handles all the player controls from inputs and how the speed and movement is adjusted from these. Checks here if player fires and moves aim positions too.
+	End Step			Restricts the players movement and postion to the playable area and bounces them back into the arean if they try to leave.
+	Draw				Used to draw the player appropriately on if they are in a flashed state or not.
+	-><- obj_enemy		Collision event for enemy slows the player down.
+	-><- obj_obstacle	Collision event for obstacles bounces and repels the player from rocks it touches.
+	
+obj_player_shoot
+	Sprite animation that is used when player fires gun.
+	
+	Create				Sets up variables for the owner it came from and its animation speed state.
+	End Step			Controls the position of the object and its angle based of the player who made it including its offset.
+	Draw				Checks if the player it came from is alive so it can still draw.
+	Animation End		Destroys the object as it has finished animating.
+
+obj_enemy
+	Enemies objects that control their behavoirs and all of their movement conditions.
+	
+	Create				Sets all all the enenmy variables such as its health, move speeds, rate of fire, buffers for collisions, movement nodes, target, dust trails and indicators.
+						Contains functions called when appropriate:
+							find_path()										Called when enemy needs to recalculate its next path to the target and movement node positions.
+							lock_target()									Called when enemy needs to find nearest player target to path towards.
+							create_projectile_enemy()						Called when enemy is firing at its target, creates enemy fireball projectile at offset location to fire towards the target.
+	Destroy				Creates dead body object at the location and angle enemy was at.
+	Step				Changes enemy behavor on what the current game state is. Locks player targets when it needs to, checks node distances and recaulates route and positions when
+						needed. Will aim to avoid other obstacles and enemies by adjusting its speed. Also checks if firing at target is possible controlling its cooldowns while doing so.
+	End Step			Clamps enemy position to playable area.
+	Draw				Controls what sprite the enemies flash state is showing.
+	-><- obj_enemy		Pushes the enemies away from each other and slows down if still spawning to not effect joining the level.
+	-><- obj_obstacle	Collision event for obstacles bounces and repels the enemy from rocks it touches.
+	-><- obj_player		Pushes the enemy away from the player and slows down if still spawning to not effect joining the level.
+	
+obj_enemy_dead
+	Used for the dead enemy sprites that apear when an enemy is destroyed.
+	
+	Create				Sets the variables for alpha as well at the rate it fades out, also creates the explosion particle handler object and body part sequence.
+	Step				Hides the body and also controls the body sequence for pauses, also destroys the sequence and itself once finished.
+	
+obj_enemy_indicator
+	Object displays where enemies positions are to player when enemies are off screen.
+	
+	Create				Creates variables for the target its pointing at, the alpha values object uses and the buffer for clamping the position of the indictor to the screen.
+	Step				Checks where the target is and if its still alive, points to its location moved to the edge of screen while clamped from the buffer reducing the alpha
+						in and out depending on the targets distance to the screen, also fades the indicator out and destroys it when the target no longer exiists.
+	End Step			Updates the positions based on the camera position.
+	Draw GUI			Draws the indicator at the position closest to target while pointing towards them.
+	
+obj_projectile
+	Object used for the player and enemy projectiles within the game.
+	
+	Create				Sets up object variables for the owner it came from and the the speed it travels at.
+						Contains functions called when appropriate:
+							correct_player()									Called when player fires the projectile to set up direction to follow the guns angle and creates the players spark particle effect.
+							correct_enemy()										Called when enemy fires the projectile to set up direction to head towards the enemies target.
+							spark_projectile()									Called when the projectile has had a collision that should destroy it and plays the approprate spark particle effect based on if it is from an enemy or player.
+	Step				Checks the projectile hasnt left the playable area and sparks it if it has.
+	-><- obj_enemy		Checks if projectile has come from a player and add's score to the appropraite player before removing health from the enemy and sparking the particle.
+	-><- obj_obstacle	Sparks the projectile on collision.
+	-><- obj_player		Checks the projectile does not belong to the player who got hit before removing health from the player and sparking.
+
+obj_enemy_spawner
+	Object used to control the enemy spawn locations and queues.
+	
+	Create				Variables created from the facing state of the spawner as well as the queue and cooldown for spawning the enemies.
+						Contains a function called when appropriate:
+							spawn_enemy()										Called when the cooldown has finished and the queue is ready to create an enemy with the appropriate facing.
+	Step				Checks the queue and cooldown spawning new enemies when possible.
+	
+obj_flower
+	Small flower objects that are created in the play area.
+	
+	Create				Sets up the flower sprite at random as well as its rotation and scale.
+	
+obj_level_ground
+	Object that stores what ground sprite it is and where it's position is.
+	
+	Create				Picks a random sprite from the 3 options it the ground sprites image index.
+	
+obj_level_wall
+	Object that stores what sprite it is and position based on what face type state is applied to it.
+	
+	Create				Stores its type and function called to set the sprite:
+							set_sprite()										Sets the sprite based on what type the object is.
+							
+obj_obstacle
+	Object used for obstacles witin the arena.
+	
+	Create				Sets the sprite at random from the 3 sprite options it could be.
+	
+obj_banner_complete
+	Object used when the template has been completed.
+	
+	Create				Sets the banners display text options, loads and sorts the highscores placing the players score in where possible before saving the buffer file for furture use.
+	Draw				Draws the banner and text.
+
+obj_banner_lose
+	Object used when the player dies and the game ends.
+	
+	Create				Sets the banners display text options, loads and sorts the highscores placing the players score in where possible before saving the buffer file for furture use.
+	Draw				Draws the banner and text.
+
+obj_banner_pause
+	Object used when the game is paused and the pause menu is shown
+	
+	Create				Sets the banners display text options.
+	Draw				Draws the banner and text.
+
+obj_banner_wave_clear
+	Object created at the end of a wave to give players an all clear.
+	
+	Create				Sets the banners display text options and life cooldown.
+	Step				Checks the game is still playing and fades the banner in and out based on the time passed and the life varibable of time it has.
+	End Step			Updates the banners postion based on the cameras position.
+	Draw				Draws the banner and text.
+
+obj_banner_wave_clear
+	Object created before the start of a wave to give players warning enemies are incoming.
+	
+	Create				Sets the banners display text options and life cooldown.
+	Step				Checks the game is still playing and fades the banner in and out based on the time passed and the life varibable of time it has.
+	End Step			Updates the banners postion based on the cameras position.
+	Draw				Draws the banner and text.
+
+obj_button_reload
+	Game object that exists when touch inputs are enabled to call the reload functionality.
+	
+	Create				Contains variables for button text and scale settings.
+	Step				Scales button up and down depending on its state.
+	Draw				Draws the button scaled when it should be visible.
+	Tap					Called when tapped checks the games state before reloading reloading the players ammmo and scaling the button appropriately.
+	
+obj_joystick
+	Parent game object used for virtual joysticks.
+	
+	Create				Contains variables for the joysticks touch ID, radius, top position, and horizontal and vertical values. Also has the function for updating the input ID.
+	Begin Step			Checks if the ID exists or not, setting the values appropriatly based from the ID and radius.
+	Draw				Skips drawing the joystick sprite normally.
+	Draw GUI			Draws the sprite from screen coordinates in the GUI layer.
+	
+obj_joystick_left and obj_joystick_right
+	Child objects of obj_joystick inhert all of its events with their own positions being updated in the create event.
+
+obj_button_continue		
+	Object used in pause screen as continue button.
+	
+	Create				Contains variables for button text and scale settings.
+	Step				Checks for controller input and scales button up and down depending on its state before resuming the game.
+	Draw				Draws the button and its scaled text.
+	Left Released		Sets button to pressed state.
+	Mouse Enter			Sets button to act highlighted.
+	Mouse Leave			Sets button to return to normal.
+
+obj_button_main_menu		
+	Object used in pause screen and gameover screens as a main menu button.
+	
+	Create				Contains variables for button text and scale settings.
+	Step				Checks for controller input and scales button up and down depending on its state before returning to the main menu.
+	Draw				Draws the button and its scaled text.
+	Left Released		Sets button to pressed state and plays sound.
+	Mouse Enter			Sets button to act highlighted.
+	Mouse Leave			Sets button to return to normal.
+	
+obj_button_leaderboard		
+	Object used in splash screen to show and hide highscore table
+	
+	Create				Contains variables for button scale settings.
+	Step				Checks for controller input and scales button up and down depending on its state before changing if the screen should show or not.
+	Left Released		Sets button to pressed state and plays sound.
+	Mouse Enter			Sets button to act highlighted.
+	Mouse Leave			Sets button to return to normal.
+	
+obj_button_pause
+	Object used to pause game, appears as symbol in top left of screen.
+	
+	Create				Contains variables for button scale settings.
+	Step				Updates position from camera position and checks for inputs from keyboard and gamepads before updating scaling.
+	Draw				Draws sprite when game is playing.
+	Left Released		Sets button to pressed state.
+	Mouse Enter			Sets button to act highlighted.
+	Mouse Leave			Sets button to return to normal.
+	Tap					Scales the button and calls function when used.
+	
+obj_button_play
+	Object used as button to start game from splash screen.
+	
+	Create				Contains variables for button scale settings and sets aiming mode variable.
+	Step				Checks for inputs from gamepads before updating scaling and changing to arena room.
+	Left Released		Sets button to pressed state and sets aiming mode to mouse.
+	Mouse Enter			Sets button to act highlighted.
+	Mouse Leave			Sets button to return to normal.
+
+obj_button_quit
+	Object used as button to quit game from splash screen.
+	
+	Create				Contains variables for button scale settings.
+	Step				Checks for inputs from gamepads before updating scaling and closing the game.
+	Left Released		Sets button to pressed state.
+	Mouse Enter			Sets button to act highlighted.
+	Mouse Leave			Sets button to return to normal.
+	
+obj_button_retry
+	Object used in gameover screens as a restart button.
+	
+	Create				Contains variables for button text and scale settings.
+	Step				Checks for controller input and scales button up and down depending on its state before restarting the room.
+	Draw				Draws the button and its scaled text.
+	Left Released		Sets button to pressed state and plays sound.
+	Mouse Enter			Sets button to act highlighted.
+	Mouse Leave			Sets button to return to normal.
+
+obj_button_sound
+	Object used as button to toggle sound from splash screen.
+	
+	Create				Contains variables for button scale settings and sets master gain and variables for sound.
+	Step				Checks for inputs from gamepads before updating scaling and changing the master gain to toggled value.
+	Left Released		Sets button to pressed state.
+	Mouse Enter			Sets button to act highlighted.
+	Mouse Leave			Sets button to return to normal.
+	
+obj_reload_hud_element
+	Object used to display ammo status for the player when not in touch mode.
+	
+	Create				Sets inial alpha variables and scales the sprite.
+	End Step			Calculates if should be hidden or not based on the players ammo value and then adjusts its alpha value in and out. 
+	Draw				Tracks its position based on the players position and draws when not in paused menu.
+
+# PARTICLE SYSTEMS
+
+There are 6 Particle Systems within this project:
+
+ps_character_defeat
+	Explosion particle system used when players or enmeies die.
+	
+ps_dust_smoke
+	Stream particle system used behind player and enemies to show movement.
+	
+ps_enemy_shot
+	Sparking particle system used when enemy fireballs collide with objects.
+	
+ps_player_shot
+	Sparking particle system used when player fireballs collide with objects and are fired.
+
+ps_shoot_empty
+	Particle effect played when the players gun is reloading or needing to be reloaded but the player is out of ammo.
+
+ps_shoot_smoke
+	Particle effect that plays with fireball projectiles when fired.
+
+
+# ROOMS
+
+There are 2 Rooms within this project:
+
+rm_main_menu
+	This is the main menu room and is the first room that is loaded into within the project.
+	
+	Instances		The instances layer of the room is the only instance layer at start with only the "obj_splash_manager" on it.
+	Background		The background layer is kept in the room but has nothing set to it.
+	
+rm_arena
+	This is the main game room that all the arena gameplay takes place within the project.
+	
+	Popups			This instance layer is what the wave popup's and all banner menus such as the pause and gameover screens are set to.
+	GM				This instance layer is what "obj_game_manager" is set to and is the only inital object within the room.
+	Explosions		An effect layer used by the particle systems for player and enemy exlosions.
+	Instances		An instance layer used for the player so they can draw on top of most of the arena elements.
+	Fumes			Effect layer used for particle systems when the players gun jams.
+	Enemies			Instance layer used for the games enemies to exist on.
+	Projectiles		Instance layer for all projectiles within the game.
+	Smoke			Effect layer used for projectiles smoke particle systems and the dust movement particle systems.
+	Obstacles		An instance layer used for setting the games obstacles to.
+	Bodies			Instance layer used for the enemy bodies that fade out very quickly to be set to.
+	Flowers			Flower objects are set to this instance layer.
+	Level			Instance layer used for all of the background tiles.
+	Background		The background layer is kept in the room but has nothing set to it.
+
+
+# SEQUENCES
+
+There are 7 sequences within this project:
+
+seq_enemy_parts
+	Sequece played when enemies body explosed on death before fading out.
+
+seq_lose
+	Banner menu sequence played when the player loses the game.
+
+seq_pause
+	Pause menu sequnece played when the player pauses the game.
+
+seq_splash
+	Splash screen sequence called when the game starts and shows the main splash screen menu.
+
+seq_wave_cleared
+	Sequence called to fade in banner screen on completion of wave.
+	
+seq_wave_incoming
+	Sequence called to fade in banner when new wave about to begin.
+
+seq_win
+	Win screen sequence called when player successfully completes the template.
+
+
+# Sounds
+
+There are 14 sound files within this project:
+
+They are organised by their type
+	Music
+		Played in the background (often looped).
+	SFX
+		Called when needed in game.
+
+
+# SPRITES
+
+There are 58 sprites within this project:
+
+They are organised by their use.
+	Actors
+		Enemy
+			Sprites used by the enemy actor, its fireball, and its body parts during its death sequence.
+		Player
+			Sprites used by the player actor including its fireball and all the different parts that make up its body.
+	Ground Tiles
+		Grass Arena
+			Tiles pieces used for the grassy arean with all its walls and floor iterations.
+		Obstacles
+			Sprites used for the different kind of obstacles that are used within the project.
+		The flower sprites are also stored within the ground tiles group.
+	UI
+		HUD
+			Contains all hud elements such as the ammo, health, touch control UI, and hud background as well as the players crosshair and enemy indicators.
+		MENU
+			Contains all menu elements such as the pause screen and main menu and splash screen buttons.
+		Group also contains the games vignette the banner popups for waves. 
+
+
+~~ Possible Edits! ~~
+
+If you want to edit parts of this project to make it more unique and personal feel free to!
+
+Why not try:
+	- Adding your own tile sets for new levels.
+	- Changing the difficulty by giving enemies more health or reducing the players rate of fire.
+	- Implement power ups to buff the player!
+	- Try implement some local multiplayer?
+	- Or use this as an idea of how to make your own game from scratch!
+	
+Don't forget to share what you make to gx.games so others can play your game too!
